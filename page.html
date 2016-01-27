@@ -2,7 +2,6 @@
 <html>
 <head>
 <script src="https://rawgit.com/jaysalvat/buzz/master/dist/buzz.js"></script>
-<script src="https://code.createjs.com/soundjs-0.6.2.min.js"></script>
 <script src="https://code.jquery.com/jquery-git2.min.js"></script>
 <style>
   .playing {
@@ -71,22 +70,17 @@
 <script>
 
 $(function(){
-
-  buzz.defaults.preload = 'auto';
-
   sound_files = [
-    "hihat_closed2",
-    "909-klick",
-    "909-dist",
+    "./hihat_closed2",
+    "./909-klick",
+    "./909-dist",
   ]
   sounds = []
   tracks = []
   sound_files.forEach(function(file){
-    // sounds.push(
-    //   new buzz.sound(file, { formats: ["aif"] })
-    // )
-    sound = createjs.Sound.registerSound((file + ".aif"), file)
-    sounds.push(sound)
+    sounds.push(
+      new buzz.sound(file, { formats: ["mp3"] })
+    )
   })
 
   $.each(new Array(3), function(idx, nothing){
@@ -95,7 +89,8 @@ $(function(){
     var $triggers = $("[sound='"+idx+"']")
     idx = idx
     $triggers.on("click", function(e){
-      var beat = parseInt(e.currentTarget.getAttribute("beat"))
+      var $e = $(e.currentTarget)
+      var beat = parseInt($e.attr("beat"))
       if (tracks[idx][beat] === 1){
         tracks[idx][beat] = 0
       } else { tracks[idx][beat] = 1 }
@@ -106,23 +101,20 @@ $(function(){
     function(){
       $.each(new Array(16), function(beat_idx, nothing){
         [0,1,2].forEach(function(sound_idx){
+          // debugger
           window.setTimeout(function(){
             if (tracks[sound_idx][beat_idx] === 1) {
-              var trigger = document.querySelectorAll("[sound='"+sound_idx+"'][beat='"+beat_idx+"']")
-              $.makeArray(trigger).forEach(function(elem){elem.className += "playing" })
-              // sounds[sound_idx].play()
-              debugger
-              createjs.Sound.play(sound_files[sound_idx]);
-              console.log("playign sound")
+              var $trigger = $("[sound='"+sound_idx+"'][beat='"+beat_idx+"']")
+                            $trigger.addClass("playing")
+              sounds[sound_idx].play()
             }
-          }, (300 * (beat_idx + 1)))
+            console.log("playign sound")
+          }, (200 * (beat_idx + 1)))
         })
       })
       console.log("nwe loop")
-      $.makeArray(document.querySelectorAll(".playing")).forEach(function(elem){
-        elem.className = ""
-      })
-    }, 420
+      $(".playing").removeClass("playing")
+          }, 3200
   )
  
  })
