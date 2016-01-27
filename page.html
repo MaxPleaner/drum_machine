@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://rawgit.com/jaysalvat/buzz/master/dist/buzz.js"></script>
+<script src="https://code.createjs.com/soundjs-0.6.2.min.js"></script>
+<script src="https://code.jquery.com/jquery-git2.min.js"></script>
+<style>
+  .playing {
+    border: 1px solid red;
+  }
+</style>
+</head>
+<body>
+
+<h3> Sound 1</h3>
+<button sound="0" beat="0">0</button>
+<button sound="0" beat="1">1</button>
+<button sound="0" beat="2">2</button>
+<button sound="0" beat="3">3</button>
+<button sound="0" beat="4">4</button>
+<button sound="0" beat="5">5</button>
+<button sound="0" beat="6">6</button>
+<button sound="0" beat="7">7</button>
+<button sound="0" beat="8">8</button>
+<button sound="0" beat="9">9</button>
+<button sound="0" beat="10">10</button>
+<button sound="0" beat="11">11</button>
+<button sound="0" beat="12">12</button>
+<button sound="0" beat="13">13</button>
+<button sound="0" beat="14">14</button>
+<button sound="0" beat="15">15</button>
+
+<h3> Sound 2</h3>
+
+<button sound="1" beat="0">0</button>
+<button sound="1" beat="1">1</button>
+<button sound="1" beat="2">2</button>
+<button sound="1" beat="3">3</button>
+<button sound="1" beat="4">4</button>
+<button sound="1" beat="5">5</button>
+<button sound="1" beat="6">6</button>
+<button sound="1" beat="7">7</button>
+<button sound="1" beat="8">8</button>
+<button sound="1" beat="9">9</button>
+<button sound="1" beat="10">10</button>
+<button sound="1" beat="11">11</button>
+<button sound="1" beat="12">12</button>
+<button sound="1" beat="13">13</button>
+<button sound="1" beat="14">14</button>
+<button sound="1" beat="15">15</button>
+
+
+<h3> Sound 3</h3>
+<button sound="2" beat="0">0</button>
+<button sound="2" beat="1">1</button>
+<button sound="2" beat="2">2</button>
+<button sound="2" beat="3">3</button>
+<button sound="2" beat="4">4</button>
+<button sound="2" beat="5">5</button>
+<button sound="2" beat="6">6</button>
+<button sound="2" beat="7">7</button>
+<button sound="2" beat="8">8</button>
+<button sound="2" beat="9">9</button>
+<button sound="2" beat="10">10</button>
+<button sound="2" beat="11">11</button>
+<button sound="2" beat="12">12</button>
+<button sound="2" beat="13">13</button>
+<button sound="2" beat="14">14</button>
+<button sound="2" beat="15">15</button>
+
+<script>
+
+$(function(){
+
+  buzz.defaults.preload = 'auto';
+
+  sound_files = [
+    "hihat_closed2",
+    "909-klick",
+    "909-dist",
+  ]
+  sounds = []
+  tracks = []
+  sound_files.forEach(function(file){
+    // sounds.push(
+    //   new buzz.sound(file, { formats: ["aif"] })
+    // )
+    sound = createjs.Sound.registerSound((file + ".aif"), file)
+    sounds.push(sound)
+  })
+
+  $.each(new Array(3), function(idx, nothing){
+    tracks = tracks
+    tracks.push(new Array(16))
+    var $triggers = $("[sound='"+idx+"']")
+    idx = idx
+    $triggers.on("click", function(e){
+      var beat = parseInt(e.currentTarget.getAttribute("beat"))
+      if (tracks[idx][beat] === 1){
+        tracks[idx][beat] = 0
+      } else { tracks[idx][beat] = 1 }
+    }.bind(this))
+  }.bind(this))
+  
+  window.setInterval(
+    function(){
+      $.each(new Array(16), function(beat_idx, nothing){
+        [0,1,2].forEach(function(sound_idx){
+          window.setTimeout(function(){
+            if (tracks[sound_idx][beat_idx] === 1) {
+              var trigger = document.querySelectorAll("[sound='"+sound_idx+"'][beat='"+beat_idx+"']")
+              $.makeArray(trigger).forEach(function(elem){elem.className += "playing" })
+              // sounds[sound_idx].play()
+              debugger
+              createjs.Sound.play(sound_files[sound_idx]);
+              console.log("playign sound")
+            }
+          }, (300 * (beat_idx + 1)))
+        })
+      })
+      console.log("nwe loop")
+      $.makeArray(document.querySelectorAll(".playing")).forEach(function(elem){
+        elem.className = ""
+      })
+    }, 420
+  )
+ 
+ })
+</script>
+</body>
+</html>
