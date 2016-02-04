@@ -32,8 +32,14 @@ $(function () {
         // at which this sound was played last
         if (typeof tracks[sound][beat] === 'undefined') {
 
-            // beat being added and will be played on the next check
-            tracks[sound][beat] = 0;
+            // beat being added and will be played after the first interval expires
+            tracks[sound][beat] = Date.now();
+
+            // play the sound now
+            buzzes[sound].play();
+
+            // mark as playing
+            $button.addClass('playing');
         } else {
 
             // beat should no longer be played
@@ -63,10 +69,6 @@ $(function () {
 
                     // has there been enough time since we last played this sound?
                     if ((currentTime - timePlayedLast) > interval) {
-
-                        // mark the button as playing
-                        var $button = $("[data-sound='" + sound + "'][data-beat='" + beat + "']");
-                        $button.addClass('playing');
 
                         // update our time last played
                         tracks[sound][beat] = currentTime;
