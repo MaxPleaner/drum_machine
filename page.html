@@ -12,112 +12,61 @@
 <body>
 
 <h3> Sound 1</h3>
-<button sound="0" beat="0">0</button>
-<button sound="0" beat="1">1</button>
-<button sound="0" beat="2">2</button>
-<button sound="0" beat="3">3</button>
-<button sound="0" beat="4">4</button>
-<button sound="0" beat="5">5</button>
-<button sound="0" beat="6">6</button>
-<button sound="0" beat="7">7</button>
-<button sound="0" beat="8">8</button>
-<button sound="0" beat="9">9</button>
-<button sound="0" beat="10">10</button>
-<button sound="0" beat="11">11</button>
-<button sound="0" beat="12">12</button>
-<button sound="0" beat="13">13</button>
-<button sound="0" beat="14">14</button>
-<button sound="0" beat="15">15</button>
+<button class="sound" data-sound="0" data-beat="0">0</button>
+<button class="sound" data-sound="0" data-beat="1">1</button>
+<button class="sound" data-sound="0" data-beat="2">2</button>
+<button class="sound" data-sound="0" data-beat="3">3</button>
+<button class="sound" data-sound="0" data-beat="4">4</button>
+<button class="sound" data-sound="0" data-beat="5">5</button>
+<button class="sound" data-sound="0" data-beat="6">6</button>
+<button class="sound" data-sound="0" data-beat="7">7</button>
+<button class="sound" data-sound="0" data-beat="8">8</button>
+<button class="sound" data-sound="0" data-beat="9">9</button>
+<button class="sound" data-sound="0" data-beat="10">10</button>
+<button class="sound" data-sound="0" data-beat="11">11</button>
+<button class="sound" data-sound="0" data-beat="12">12</button>
+<button class="sound" data-sound="0" data-beat="13">13</button>
+<button class="sound" data-sound="0" data-beat="14">14</button>
+<button class="sound" data-sound="0" data-beat="15">15</button>
 
 <h3> Sound 2</h3>
 
-<button sound="1" beat="0">0</button>
-<button sound="1" beat="1">1</button>
-<button sound="1" beat="2">2</button>
-<button sound="1" beat="3">3</button>
-<button sound="1" beat="4">4</button>
-<button sound="1" beat="5">5</button>
-<button sound="1" beat="6">6</button>
-<button sound="1" beat="7">7</button>
-<button sound="1" beat="8">8</button>
-<button sound="1" beat="9">9</button>
-<button sound="1" beat="10">10</button>
-<button sound="1" beat="11">11</button>
-<button sound="1" beat="12">12</button>
-<button sound="1" beat="13">13</button>
-<button sound="1" beat="14">14</button>
-<button sound="1" beat="15">15</button>
+<button class="sound" data-sound="1" data-beat="0">0</button>
+<button class="sound" data-sound="1" data-beat="1">1</button>
+<button class="sound" data-sound="1" data-beat="2">2</button>
+<button class="sound" data-sound="1" data-beat="3">3</button>
+<button class="sound" data-sound="1" data-beat="4">4</button>
+<button class="sound" data-sound="1" data-beat="5">5</button>
+<button class="sound" data-sound="1" data-beat="6">6</button>
+<button class="sound" data-sound="1" data-beat="7">7</button>
+<button class="sound" data-sound="1" data-beat="8">8</button>
+<button class="sound" data-sound="1" data-beat="9">9</button>
+<button class="sound" data-sound="1" data-beat="10">10</button>
+<button class="sound" data-sound="1" data-beat="11">11</button>
+<button class="sound" data-sound="1" data-beat="12">12</button>
+<button class="sound" data-sound="1" data-beat="13">13</button>
+<button class="sound" data-sound="1" data-beat="14">14</button>
+<button class="sound" data-sound="1" data-beat="15">15</button>
 
 
 <h3> Sound 3</h3>
-<button sound="2" beat="0">0</button>
-<button sound="2" beat="1">1</button>
-<button sound="2" beat="2">2</button>
-<button sound="2" beat="3">3</button>
-<button sound="2" beat="4">4</button>
-<button sound="2" beat="5">5</button>
-<button sound="2" beat="6">6</button>
-<button sound="2" beat="7">7</button>
-<button sound="2" beat="8">8</button>
-<button sound="2" beat="9">9</button>
-<button sound="2" beat="10">10</button>
-<button sound="2" beat="11">11</button>
-<button sound="2" beat="12">12</button>
-<button sound="2" beat="13">13</button>
-<button sound="2" beat="14">14</button>
-<button sound="2" beat="15">15</button>
+<button class="sound" data-sound="2" data-beat="0">0</button>
+<button class="sound" data-sound="2" data-beat="1">1</button>
+<button class="sound" data-sound="2" data-beat="2">2</button>
+<button class="sound" data-sound="2" data-beat="3">3</button>
+<button class="sound" data-sound="2" data-beat="4">4</button>
+<button class="sound" data-sound="2" data-beat="5">5</button>
+<button class="sound" data-sound="2" data-beat="6">6</button>
+<button class="sound" data-sound="2" data-beat="7">7</button>
+<button class="sound" data-sound="2" data-beat="8">8</button>
+<button class="sound" data-sound="2" data-beat="9">9</button>
+<button class="sound" data-sound="2" data-beat="10">10</button>
+<button class="sound" data-sound="2" data-beat="11">11</button>
+<button class="sound" data-sound="2" data-beat="12">12</button>
+<button class="sound" data-sound="2" data-beat="13">13</button>
+<button class="sound" data-sound="2" data-beat="14">14</button>
+<button class="sound" data-sound="2" data-beat="15">15</button>
 
-<script>
-
-$(function(){
-  sound_files = [
-    "./hihat_closed2",
-    "./909-klick",
-    "./909-dist",
-  ]
-  sounds = []
-  tracks = []
-  sound_files.forEach(function(file){
-    sounds.push(
-      new buzz.sound(file, { formats: ["mp3"] })
-    )
-  })
-
-  $.each(new Array(3), function(idx, nothing){
-    tracks = tracks
-    tracks.push(new Array(16))
-    var $triggers = $("[sound='"+idx+"']")
-    idx = idx
-    $triggers.on("click", function(e){
-      var $e = $(e.currentTarget)
-      var beat = parseInt($e.attr("beat"))
-      if (tracks[idx][beat] === 1){
-        tracks[idx][beat] = 0
-      } else { tracks[idx][beat] = 1 }
-    }.bind(this))
-  }.bind(this))
-  
-  window.setInterval(
-    function(){
-      $.each(new Array(16), function(beat_idx, nothing){
-        [0,1,2].forEach(function(sound_idx){
-          // debugger
-          window.setTimeout(function(){
-            if (tracks[sound_idx][beat_idx] === 1) {
-              var $trigger = $("[sound='"+sound_idx+"'][beat='"+beat_idx+"']")
-                            $trigger.addClass("playing")
-              sounds[sound_idx].play()
-            }
-            console.log("playign sound")
-          }, (200 * (beat_idx + 1)))
-        })
-      })
-      console.log("nwe loop")
-      $(".playing").removeClass("playing")
-          }, 3200
-  )
- 
- })
-</script>
+<script src="page.js"></script>
 </body>
 </html>
